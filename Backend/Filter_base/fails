@@ -1,0 +1,32 @@
+
+#fails
+#cosas que no quiero borrar
+
+class TweetsListener(tweepy.StreamListener):
+
+    def on_connect(self):
+        print("Im connect!")
+    
+    def on_status(self, status):
+        print(status.text)
+        #json_data = status._json()
+        #id_status = json_data._json["id"]
+        #print("id_status")
+        #aqui meto el contador y todo eso
+        #base de datos
+    
+    def on_error(self, status_code):
+        print("Error", status_code)
+
+
+stream = TweetsListener()
+streamingApi = tweepy.Stream(auth = api.auth, listener = stream)
+
+
+streamingApi.filter(follow = ["1265638460"], track = "I am", exclude_replies = True )
+#streamingApi.filter(track = ["I am not"])        
+#track = ["Cancer free", "I"]  
+
+
+data_img = api.media_upload("C:\\Users\\anaca\\Documents\\Caro\\Hackathons\\Twitter\\tree.jpg")
+print (data_img)

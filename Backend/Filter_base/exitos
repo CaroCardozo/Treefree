@@ -1,0 +1,53 @@
+img = "parte2.jpeg"
+status = "testing something"
+try:
+   api.update_with_media(img, status)
+except:
+    print("Not completed")
+
+
+
+api.update_status("hello from tweepy")
+api.destroy_status("1289568046688825344")
+
+data_me = api.me()
+json_data = json.dumps(data._json,indent = 4)
+print(json.dumps(data_me._json,indent = 4))
+id_ultimo_tweet = data._json["status"]["id"]
+print (id_ultimo_tweet)
+api.create_favorite(id_ultimo_tweet)
+api.retweet(id_ultimo_tweet)
+api.update_status("okay", in_reply_to_status_id = id_ultimo_tweet)
+
+
+id = '1289725861726314496'
+status = "please work https://twitter.com/CaroCardozoC/status/1289725861726314496"
+try:
+   api.update_status(status)
+except:
+    print("Not completed")
+
+
+id_tweet = tweet._json['id']
+username_tweet = tweet._json['user']['screen_name']
+link_tweet = "https://twitter.com/" + str(username_tweet) + "/status/" + str(id_tweet)
+status = "Congratulations! We are so happy to hear that, come to our website to meet your own virtual tree "
+congrats = status + link_tweet
+api.update_status(congrats)
+
+
+jason = [tweet._json['text'], tweet._json['user']['screen_name']]
+    print(jason)
+
+
+#print (json.dumps(tweet._json, indent = 2))
+
+
+id_tweet = tweet._json['id']
+username_tweet = tweet._json['user']['screen_name']
+link_tweet = "https://twitter.com/" + str(username_tweet) + "/status/" + str(id_tweet)
+status = "Congratulations! We are so happy to hear that, come to our website to meet your own virtual tree "
+congrats = status + link_tweet
+api.update_status(congrats)
+user_id = tweet._json['user']['id']
+api.send_direct_message(user_id, text = "We are so happy and proud that you win this battle with cancer. For that, we want to honor you with a virtual tree on your name, you can visit it on our website. You deserve it.")
